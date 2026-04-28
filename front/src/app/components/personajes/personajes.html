@@ -1,0 +1,33 @@
+<div class="container">
+  <header>
+    <h1>Personajes</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores perspiciatis adipisci, impedit temporibus, praesentium facere atque, quae voluptates dolorem autem quas vero ad quo. Explicabo animi distinctio ab vitae enim!</p>
+  </header>
+
+  <section class="post-grid">
+    @for (per of personajes(); track per.id) {
+      <article class="post-card">
+        <div class="card-image">
+          <!-- Usamos una imagen de placeholder si el episodio no tiene una -->
+          <img [src]="per.image || './img/not-found.jpg' " 
+               [alt]="per.name" 
+               loading="lazy">
+        </div>
+        
+        <div class="card-content">
+          <span class="category">{{per.species}}</span>
+          <h2>{{ per.name }}</h2>
+          <p>{{ per.status }}</p>
+          
+          <div class="card-footer">
+            <span class="date">{{per.created | date}}</span>
+          </div>
+        </div>
+      </article>
+    } @empty {
+      <div class="loading-state">
+        <p>Cargando episodios o no hay datos disponibles...</p>
+      </div>
+    }
+  </section>
+</div>

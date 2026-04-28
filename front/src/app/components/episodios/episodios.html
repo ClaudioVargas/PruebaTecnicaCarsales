@@ -1,0 +1,26 @@
+<div class="container">
+  <header>
+    <h1>Episodios</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores perspiciatis adipisci, impedit temporibus, praesentium facere atque, quae voluptates dolorem autem quas vero ad quo. Explicabo animi distinctio ab vitae enim!</p>
+  </header>
+
+  <section class="post-grid">
+    @for (ep of episodios(); track ep.id) {
+      <article class="post-card">
+        
+        
+        <div class="card-content">
+          <span class="category">{{ep.episode}} - {{ep.air_date}}</span>
+          <h2>{{ ep.name }}</h2>          
+          <div class="card-footer">
+            <button class="btn-read-more" (click)="verDetalle(ep.id)">Ver</button>
+          </div>
+        </div>
+      </article>
+    } @empty {
+      <div class="loading-state">
+        <p>Cargando episodios o no hay datos disponibles...</p>
+      </div>
+    }
+  </section>
+</div>
