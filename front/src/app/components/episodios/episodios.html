@@ -1,9 +1,13 @@
-<div class="container">
-  <header>
-    <h1>Episodios</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores perspiciatis adipisci, impedit temporibus, praesentium facere atque, quae voluptates dolorem autem quas vero ad quo. Explicabo animi distinctio ab vitae enim!</p>
-  </header>
 
+@if(loading()){
+    <mat-spinner class="loading"></mat-spinner>
+}
+<div class="container">
+    <header>
+        <h1>Episodios</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores perspiciatis adipisci, impedit temporibus, praesentium facere atque, quae voluptates dolorem autem quas vero ad quo. Explicabo animi distinctio ab vitae enim!</p>
+    </header>
+    
   <section class="post-grid">
     @for (ep of episodios(); track ep.id) {
       <article class="post-card">
