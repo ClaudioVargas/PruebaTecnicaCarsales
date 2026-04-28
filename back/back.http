@@ -1,0 +1,25 @@
+@back_HostAddress = http://localhost:5074
+
+###
+GET {{back_HostAddress}}/api/contacto
+Accept: application/json
+
+###
+GET {{back_HostAddress}}/api/contacto/{contactoId}
+Accept: application/json
+
+###
+POST {{back_HostAddress}}/api/contacto/create
+content-Type: application/json
+{
+  "nombre": "claudio",
+  "telefono": "99999999"
+}
+
+###
+PUT {{back_HostAddress}}/api/contacto/update/{contactoId}
+Accept: application/json
+
+###
+DELETE {{back_HostAddress}}/api/contacto/delete/{contactoId}
+Accept: application/json
