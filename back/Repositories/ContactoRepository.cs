@@ -1,18 +1,21 @@
-﻿using back.Models;
+﻿using back.Core.Entity;
+using back.Core.Interfaces;
 
 namespace back.Repositories
 {
-    public class ContactoRepositories
+    public class ContactoRepository : IContactoRepository
     {
+
         private readonly List<Contacto> contactos = new();
         private int _nextId = 1;
+
 
         public IEnumerable<Contacto> GetAll()
         {
             return contactos;
         }
 
-        public Contacto GetById(int id)
+        public Contacto? GetById(int id)
         {
             return contactos.FirstOrDefault(c => c.Id == id);
         }

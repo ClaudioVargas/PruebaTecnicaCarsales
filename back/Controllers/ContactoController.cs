@@ -1,4 +1,4 @@
-﻿using back.Models;
+﻿using back.Core.Entity;
 using back.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +10,9 @@ namespace back.Controllers
     [ApiController]
     public class ContactoController : ControllerBase
     {
-        private readonly ContactoRepositories _contactoRepository;
+        private readonly ContactoRepository _contactoRepository;
 
-        public ContactoController(ContactoRepositories contactoRepository)
+        public ContactoController(ContactoRepository contactoRepository)
         {
             _contactoRepository = contactoRepository;
         }
@@ -44,6 +44,7 @@ namespace back.Controllers
         [HttpPost]
         public void Post([FromBody] Contacto contacto)
         {
+
             _contactoRepository.Add(contacto);
         }
 
@@ -51,6 +52,7 @@ namespace back.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Contacto contacto)
         {
+            contacto.Id = id;
             var editado = _contactoRepository.Update(contacto);
             if(editado)
             {
