@@ -1,14 +1,14 @@
 @back_HostAddress = http://localhost:5074
 
-###
+### Obtener todos
 GET {{back_HostAddress}}/api/contacto
 Accept: application/json
 
-###
+### obtener 1
 GET {{back_HostAddress}}/api/contacto/2
 Accept: application/json
 
-###
+### crear
 POST {{back_HostAddress}}/api/contacto
 content-Type: application/json
 Accept: application/json
@@ -17,7 +17,7 @@ Accept: application/json
   "telefono": "99999999"
 }
 
-###
+### editar
 PUT {{back_HostAddress}}/api/contacto/2
 content-Type: application/json
 Accept: application/json
@@ -26,6 +26,6 @@ Accept: application/json
   "telefono": "99999999"
 }
 
-###
+### eliminar
 DELETE {{back_HostAddress}}/api/contacto/2
 Accept: application/json

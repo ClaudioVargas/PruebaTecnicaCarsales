@@ -20,10 +20,19 @@ namespace back.Repositories
             return contactos.FirstOrDefault(c => c.Id == id);
         }
 
-        public void Add(Contacto contacto)
+        public Contacto Add(Contacto contacto)
         {
-            contacto.Id = _nextId++;
-            contactos.Add(contacto);
+
+            var existe =  isDuplicado(contactos, contacto.Telefono);
+            if (!existe)
+            {
+                contacto.Id = _nextId++;
+                contactos.Add(contacto);
+                return contacto;
+            }
+            else {
+                return null;
+            }
         }
 
         public bool Update(Contacto contacto)
@@ -48,5 +57,14 @@ namespace back.Repositories
             return false;
         }
 
+        public bool isDuplicado(List<Contacto> arr, string phone)
+        {
+            foreach (var item in arr)
+            {
+                if (item.Telefono.Equals(phone)) return true;
+            }
+            return false;
+        }
     }
 }
+
