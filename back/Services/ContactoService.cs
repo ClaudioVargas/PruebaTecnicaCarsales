@@ -14,10 +14,10 @@ namespace back.Services
             _contactoRepository = contactoRepository;
         }
 
-        public Contacto? Add(Contacto contacto)
+        public async Task<Contacto?> Add(Contacto contacto)
         {
             
-            var contactoCreado = _contactoRepository.Add(contacto);
+            var contactoCreado = await _contactoRepository.Add(contacto);
             if (contactoCreado != null)
             {
                 return contactoCreado;
@@ -26,15 +26,15 @@ namespace back.Services
            
         }
 
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            return _contactoRepository.Delete(id);
+            return await _contactoRepository.Delete(id);
 
         }
 
-        public IEnumerable<Contacto> GetAll()
+        public async Task<IEnumerable<Contacto>> GetAll()
         {
-            var contactos = _contactoRepository.GetAll();
+            var contactos = await _contactoRepository.GetAll();
             if (contactos.Count() > 0)
             {
                 return contactos;
@@ -44,9 +44,9 @@ namespace back.Services
             return Enumerable.Empty<Contacto>();
         }
 
-        public Contacto? GetById(int id)
+        public async Task<Contacto?> GetById(int id)
         {
-            var contacto = _contactoRepository.GetById(id);
+            var contacto = await _contactoRepository.GetById(id);
             if (contacto == null)
             {
                 return null;
@@ -54,10 +54,10 @@ namespace back.Services
             return contacto;
         }
 
-        public bool Update(Contacto contacto)
+        public async Task<bool> Update(Contacto contacto)
         {
             contacto.Id = contacto.Id;
-            return _contactoRepository.Update(contacto);
+            return await _contactoRepository.Update(contacto);
      
         }
     }
