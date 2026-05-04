@@ -14,7 +14,7 @@ content-Type: application/json
 Accept: application/json
 {
   "nombre": "claudio",
-  "telefono": "99999999"
+  "telefono": "99999994"
 }
 
 ### editar

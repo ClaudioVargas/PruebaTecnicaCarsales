@@ -4,10 +4,10 @@ namespace back.Core.Interfaces
 {
     public interface IContactoService
     {
-        IEnumerable<Contacto> GetAll();
-        Contacto? GetById(int id);
-        Contacto? Add(Contacto contacto);
-        bool Update(Contacto contacto);
-        bool Delete(int id);
+        Task<IEnumerable<Contacto>> GetAll();
+        Task<Contacto?> GetById(int id);
+        Task<Contacto?> Add(Contacto contacto);
+        Task<bool> Update(Contacto contacto);
+        Task<bool> Delete(int id);
     }
 }

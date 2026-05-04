@@ -21,17 +21,17 @@ namespace back.Controllers
 
         // GET: api/<ContactoController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var contactos = _contactoService.GetAll();
+            var contactos = await _contactoService.GetAll();
             return Ok(contactos);
         }
 
         // GET api/<ContactoController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var contacto = _contactoService.GetById(id);
+            var contacto = await _contactoService.GetById(id);
             if (contacto == null)
             {
                 return NotFound();
@@ -41,12 +41,12 @@ namespace back.Controllers
 
         // POST api/<ContactoController>
         [HttpPost]
-        public IActionResult Post([FromBody] Contacto contacto)
+        public async Task<IActionResult> Post([FromBody] Contacto contacto)
         {
             try
             {
 
-                var contactoCreado = _contactoService.Add(contacto);
+                var contactoCreado = await _contactoService.Add(contacto);
                 if (contactoCreado != null) { 
                     return new ObjectResult(contactoCreado) { StatusCode = StatusCodes.Status201Created };
                 }
@@ -61,10 +61,10 @@ namespace back.Controllers
 
         // PUT api/<ContactoController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Contacto contacto)
+        public async Task<IActionResult> Put(int id, [FromBody] Contacto contacto)
         {
             contacto.Id = id;
-            var editado = _contactoService.Update(contacto);
+            var editado = await _contactoService.Update(contacto);
             if(editado)
             {
                 return Ok();
@@ -74,9 +74,9 @@ namespace back.Controllers
 
         // DELETE api/<ContactoController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var eliminado = _contactoService.Delete(id);
+            var eliminado = await _contactoService.Delete(id);
             if(eliminado)
             {
                 return Ok();

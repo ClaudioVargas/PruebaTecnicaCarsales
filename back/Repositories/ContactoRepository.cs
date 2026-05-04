@@ -1,69 +1,78 @@
 ﻿using back.Core.Entity;
 using back.Core.Interfaces;
+using System.Collections.Concurrent;
 
 namespace back.Repositories
 {
     public class ContactoRepository : IContactoRepository
     {
 
-        private readonly List<Contacto> contactos = new();
-        private int _nextId = 1;
+        //private readonly List<Contacto> contactos = new();
+        private static readonly ConcurrentDictionary<int, Contacto> _contactos = new();
+        private static int _ultimoId = 0;
 
 
-        public IEnumerable<Contacto> GetAll()
+        public async Task<IEnumerable<Contacto>> GetAll()
         {
-            return contactos;
+            return await Task.FromResult(_contactos.Values);
         }
 
-        public Contacto? GetById(int id)
+        public async Task<Contacto?> GetById(int id)
         {
-            return contactos.FirstOrDefault(c => c.Id == id);
+            _contactos.TryGetValue(id, out var contacto);
+            return await Task.FromResult(contacto);
         }
 
-        public Contacto Add(Contacto contacto)
+        public async Task<Contacto?> Add(Contacto contacto)
         {
 
-            var existe =  isDuplicado(contactos, contacto.Telefono);
+            var existe = await isDuplicado(contacto.Telefono);
             if (!existe)
             {
-                contacto.Id = _nextId++;
-                contactos.Add(contacto);
-                return contacto;
+                int nuevoId = Interlocked.Increment(ref _ultimoId);
+                _ultimoId = nuevoId;
+                var nuevoContacto = new Contacto
+                {
+                    Id = nuevoId,
+                    Nombre = contacto.Nombre,
+                    Telefono = contacto.Telefono
+                };
+                _contactos.TryAdd(nuevoId, nuevoContacto);
+                return nuevoContacto;
             }
             else {
                 return null;
             }
         }
 
-        public bool Update(Contacto contacto)
+        public async Task<bool> Update(Contacto contacto)
         {
-            var index = contactos.FindIndex(item => item.Id == contacto.Id);
-            if (index != -1)
+            if (_contactos.ContainsKey(contacto.Id))
             {
-                contactos[index] = contacto;
-                return true;
+                _contactos[contacto.Id] = contacto;
+                return await Task.FromResult(true) ;
             }
-            return false;
+            return await Task.FromResult(false);
         }
 
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            var contacto = GetById(id);
+            var contacto = await GetById(id);
             if (contacto != null)
             {
-                contactos.Remove(contacto);
-                return true;
+                _contactos.TryRemove(contacto.Id, out _);
+                return await Task.FromResult(true);
             }
-            return false;
+            return await Task.FromResult(false);
         }
 
-        public bool isDuplicado(List<Contacto> arr, string phone)
+        public async Task<bool> isDuplicado(string phone)
         {
-            foreach (var item in arr)
+            foreach (var item in _contactos.Values)
             {
-                if (item.Telefono.Equals(phone)) return true;
+                if (item.Telefono.Equals(phone)) return await Task.FromResult(true);
             }
-            return false;
+            return await Task.FromResult(false);
         }
     }
 }
