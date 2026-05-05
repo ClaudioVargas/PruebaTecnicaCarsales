@@ -86,7 +86,9 @@ table {
 }
 
 .centered-no-data {
-  text-align: center;
-  /* Opcional: ajustar padding si es necesario */
-  padding: 16px;
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center;     /* Centrado vertical */
+  width: 100%;             /* Asegura que ocupe todo el ancho */
+  min-height: 50px;        /* Define una altura si es necesario */
 }

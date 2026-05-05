@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { RickandmortyService } from '../../services/rickandmortyService';
+import { RickandmortyService } from '../../services/rickandmorty.service';
 import { PersonajeModel } from '../../models/personaje.model';
 import { DatePipe } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';

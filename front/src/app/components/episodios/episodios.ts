@@ -1,5 +1,5 @@
 import { Component, OnInit, signal, ViewChild } from '@angular/core';
-import { RickandmortyService } from '../../services/rickandmortyService';
+import { RickandmortyService } from '../../services/rickandmorty.service';
 import { EpisodioModel } from '../../models/episodio.model';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog } from '@angular/material/dialog';
