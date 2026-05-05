@@ -1,0 +1,42 @@
+.empty-state-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 300px;
+
+  .empty-state-card {
+    max-width: 400px;
+    text-align: center;
+    box-shadow: none;
+    background: transparent;
+    border: 1px dashed #ccc; 
+  }
+
+  .icon-wrapper {
+    margin-bottom: 16px;
+    
+    mat-icon {
+      font-size: 64px;
+      height: 64px;
+      width: 64px;
+      opacity: 0.5;
+    }
+  }
+
+  h2 {
+    margin: 0 0 8px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .actions {
+    margin-top: 16px;
+  }
+}

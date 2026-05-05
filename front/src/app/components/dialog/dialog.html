@@ -1,5 +1,27 @@
-<h3>No hay mucha información que mostrar</h3>
+<h2 mat-dialog-title class="episodio-title">
+  Detalle del episodio
+  <button mat-icon-button (click)="cerrar()" class="close-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
 
-@if(data) {
-    <span>{{data.air_date}}</span>
-}
+<mat-dialog-content>
+  <div class="episodio-grid">
+    <!-- Columna Info -->
+    <div class="episodio-info">
+      <p class="eposidio">{{ data.episode}}</p>
+      <h3>{{ data.name }}</h3>
+      
+      <mat-divider></mat-divider>
+      
+      <div class="description">
+        <h4>Dia de lanzamiento</h4>
+        <p>{{ data.air_date }}</p>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()">Cerrar</button>
+</mat-dialog-actions>

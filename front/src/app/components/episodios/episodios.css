@@ -84,3 +84,9 @@ table {
   width: 100%;
   /* border: 1px red solid; */
 }
+
+.centered-no-data {
+  text-align: center;
+  /* Opcional: ajustar padding si es necesario */
+  padding: 16px;
+}

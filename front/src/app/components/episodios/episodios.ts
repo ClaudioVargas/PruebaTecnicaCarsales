@@ -12,6 +12,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SinResultado } from './sin-resultado/sin-resultado';
 
 @Component({
   selector: 'app-episodios',
@@ -22,7 +23,8 @@ import { CommonModule } from '@angular/common';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule],
+    MatSelectModule,
+    SinResultado],
   templateUrl: './episodios.html',
   styleUrl: './episodios.css',
 })
@@ -44,6 +46,12 @@ export class Episodios implements OnInit {
   temporadas!: string[]
 
   mensajeError = "";
+
+  error = false
+  tituloSinResultados = "No se encontraron resultados"
+  subTituloSinResultados = "Parece que no hay datos para mostrar en este momento. Intenta ajustar tus filtros o recargar la página."
+  sinResusltadoTabla = "No hay datos para mostrar. Intenta ajustar tus filtros o recargar la página."
+
 
   constructor(
     private rickandmortingService: RickandmortyService,
@@ -68,7 +76,9 @@ export class Episodios implements OnInit {
       },
       error: (err) => {
         console.error('Error al cargar datos', err)
-        this.mensajeError = "Tenemos problemas de conexion, contacte con el administrador"
+        this.error = true
+          this.tituloSinResultados = "No se pudo cargar la pagina"
+          this.subTituloSinResultados = "Intente recargar la pagina o contacte con el administrador"
         this.loading.set(false)
       }
     });

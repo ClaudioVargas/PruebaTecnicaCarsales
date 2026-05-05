@@ -1,0 +1,19 @@
+<div class="empty-state-container">
+  <mat-card class="empty-state-card">
+    <mat-card-content>
+      <div class="icon-wrapper">
+        <mat-icon color="primary">search_off</mat-icon>
+      </div>
+      
+      <h2>{{titulo}}</h2>
+      <p>{{subTitulo}}</p>
+      
+      <div class="actions">
+        <button mat-stroked-button color="primary" (click)="onRetry()">
+          <mat-icon>refresh</mat-icon>
+          Reintentar
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
