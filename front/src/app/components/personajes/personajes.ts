@@ -22,7 +22,6 @@ export class Personajes {
   ) { }
 
   ngOnInit(): void {
-    console.log("****************************")
     this.rickandmortingService.getPersonajes().subscribe({
       next: (data) => {
         this.personajes.set(data.results)
@@ -30,16 +29,6 @@ export class Personajes {
       },
       error: (err) => console.error('Error al cargar datos', err)
     });
-
-
-
-
-    // this.rickandmortingService.getPersonajes().subscribe((response)=>{
-    //   console.log("response", response)
-    //   this.personajes = response.results
-    //   console.log("this.episodios", this.personajes)
-
-    // });
   }
 
 

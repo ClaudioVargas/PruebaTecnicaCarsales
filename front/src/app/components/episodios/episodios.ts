@@ -59,7 +59,6 @@ export class Episodios implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("****************************")
     this.loading.set(true)
     this.rickandmortingService.getEpisodios().subscribe({
       next: (data) => {
@@ -72,7 +71,6 @@ export class Episodios implements OnInit {
         this.definirFiltrosTemporada()
         this.loading.set(false)
         this.mensajeError = "No fue posible cargar datos"
-        console.log("this.dataSource", this.dataSource)
       },
       error: (err) => {
         console.error('Error al cargar datos', err)
@@ -85,11 +83,7 @@ export class Episodios implements OnInit {
   }
 
   verDetalle(id: number) {
-    console.log("id*********", id)
     this.rickandmortingService.getEpisodio(id).subscribe((response) => {
-      console.log("response", response)
-      // this.episodios = response.results
-      console.log("****reponse verDetalle", response)
       this.openDialog(response)
 
 
@@ -103,7 +97,7 @@ export class Episodios implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed => result =>', result);
+      // console.log('The dialog was closed => result =>', result);
     });
   }
 
@@ -120,12 +114,7 @@ export class Episodios implements OnInit {
 
   pageEvent: PageEvent | undefined;
 
-  // handlePageEvent(e: PageEvent) {
-  //   this.pageEvent = e;
-  //   this.length = e.length;
-  //   this.pageSize = e.pageSize;
-  //   this.pageIndex = e.pageIndex;
-  // }
+
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     if (setPageSizeOptionsInput) {
@@ -139,35 +128,11 @@ export class Episodios implements OnInit {
     this.temporadas = Array.from(
       new Set(this.dataSource.data.map(item => item.episode.substring(0, 3)))
     );
-    console.log("temporadas", this.temporadas);
   }
 
-  // applyFilter(event: Event) {
-  //   console.log("*******************************")
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   console.log("filterValue", filterValue)
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-
-  //   if (this.dataSource.paginator) {
-  //     this.dataSource.paginator.firstPage();
-  //   }
-  // }
-  // onSelectionChange(event: MatSelectChange) {
-  //   if (event.value.length > 0) {
-  //     this.dataSource.filter = JSON.stringify(event.value);
-  //   } else {
-  //     this.dataSource.filter = '';
-  //     this.dataSource.paginator?.firstPage();
-  //   }
-
-  // }
-
   onSelectionChange(event: MatSelectChange | Event) {
-    console.log("onSelectionChange", event, typeof event)
     if (event instanceof KeyboardEvent) {
-      console.log("KeyboardEvent")
       const filterValue = (event.target as HTMLInputElement).value;
-      console.log("filterValue", filterValue)
       this.dataSource.filter = filterValue.trim().toLowerCase();
 
       if (this.dataSource.paginator) {
@@ -175,7 +140,6 @@ export class Episodios implements OnInit {
       }
     }
     if (event instanceof MatSelectChange) {
-      console.log("MatSelectChange")
 
       if (event.value.length > 0) {
         this.dataSource.filter = JSON.stringify(event.value);
@@ -191,7 +155,6 @@ export class Episodios implements OnInit {
     // 2. Sobrescribir filterPredicate
     this.dataSource.filterPredicate = (data: EpisodioModel, filter: string) => {
       // Si no hay filtros, mostrar todo
-      console.log("typeof filter", typeof filter )
       if (!filter) return true;
       if(this.esJSONValido(filter)) {
         const temporadasFiltro = JSON.parse(filter);

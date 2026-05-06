@@ -11,7 +11,7 @@ describe('Dialog', () => {
     await TestBed.configureTestingModule({
       imports: [Dialog],
       providers: [
-        { provide: MatDialogRef, useValue: { close: jasmine.createSpy('cerrar') } },
+        { provide: MatDialogRef, useValue: { close: vi.fn() } },
         {
           provide: MAT_DIALOG_DATA, useValue:
           {

@@ -1,59 +1,81 @@
-# Front
-
+# Front Rick and Morty
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
 
-## Development server
+> Esta esta es una aplicacion informativa que te permite ver la informacion de los episodios y personajes  de Rick and Morty
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+## 📋 Tabla de Contenidos
+- [Características](#-características)
+- [Prerrequisitos](#-prerrequisitos)
+- [Instalación y Configuración](#-instalación-y-configuración)
+- [Comandos Disponibles](#-comandos-disponibles)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
+- [Contribución](#-contribución)
+- [Licencia](#-licencia)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## ✨ Características
+- **Arquitectura de Standalone Components:** Sin `NgModule`, enfocado en la simplicidad.
+- **Gestión de Estado:** NgRx para un flujo de datos predecible.
+- **Estilos:** CSS / Material angular.
+- **Lazy Loading:** Optimización de rutas para mejor rendimiento.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ⚙️ Prerrequisitos
+Asegúrate de tener instalado lo siguiente antes de empezar:
+- [Node.js](https://nodejs.org) (Versión LTS recomendada)
+- [Angular CLI](https://angular.dev) (`npm install -g @angular/cli`)
 
-```bash
-ng generate --help
-```
+## 🚀 Instalación y Configuración
 
-## Building
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/ClaudioVargas/PruebaTecnicaCarsales.git
+    cd PruebaTecnicaCarsales/front
+    ```
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+3.  **Ejecutar la aplicación:**
+    ```bash
+    ng serve -o
+    ```
+    La aplicación estará disponible en `http://localhost:4200`.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🛠️ Comandos Disponibles
+*   `ng serve`: Ejecuta el servidor de desarrollo.
+*   `ng build`: Genera un paquete de produccion.
+*   `ng test`: Ejecuta pruebas unitarias.
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🧠 Tecnologías Utilizadas
+*   [Angular 21](https://angular.dev/)
+*   [RxJS](https://rxjs.dev)
+*   [Angular Material](https://angular.io) (Opcional)
+:
+##  Parte de la pauta cubierta
+*   [Angular 21](https://angular.dev/)
+*   [RxJS](https://rxjs.dev)
+*   [Angular Material](https://angular.io) (Opcional)
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+*   Registrar correctamente HttpClient en la configuración de la app, por ejemplo con provideHttpClient().
+*   Implementar: búsqueda por nombre, filtro por temporada y paginación.
+*   Separar visualmente los estados de carga, error y sin resultados.
+*   Mostrar un mensaje de error real al usuario cuando falle la API.
+*   Mostrar un estado de “sin resultados” distinto al de carga.
+*   Mejorar el modal de detalle para que muestre información útil del episodio, no solo la fecha.
+*   Eliminar texto placeholder tipo lorem ipsum y reemplazarlo por contenido coherente con la app.
+*   Corregir o eliminar la ruta detalle si no tiene uso real.
+*   Revisar la navegación para usar routing Angular de forma limpia, idealmente con routerLink en vez de href.
+*   Evitar any en el dialog y tipar correctamente MAT_DIALOG_DATA.
+*   Limpiar console.log, comentarios muertos y restos de pruebas o depuración.
+*   Corregir los tests actuales, porque al menos algunos no coinciden con el código real.
+*   Agregar al menos 1 test unitario válido sobre un componente o servicio real.
+*   Reescribir el README del frontend para explicar cómo correr la app, qué hace, qué decisiones técnicas tomó y qué *   partes de la pauta cubre.
+*   Como mejora de puntaje, agregar manejo global de errores con interceptor.
+*   Como mejora de puntaje, considerar responsive real y alguna optimización simple como caching o lazy loading.

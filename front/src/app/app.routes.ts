@@ -6,17 +6,10 @@ export const routes: Routes = [
     {
     path: '',
     component: Episodios,
-    },    
+    },
     {
         path: 'personajes',
-        component: Personajes,
-    },    
-    {
-        path: 'episodios',
-        component: Episodios,
-    },    
-    {
-        path: 'detalle',
-        component: Episodios,
-    }
+        loadComponent: () => import('../app/components/personajes/personajes').then(m => m.Personajes)
+    },
+    { path: '**', component: Episodios } 
 ];

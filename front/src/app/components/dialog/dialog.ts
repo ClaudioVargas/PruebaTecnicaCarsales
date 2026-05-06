@@ -14,7 +14,6 @@ export class Dialog {
   constructor(
     public dialogRef: MatDialogRef<Dialog>,
     @Inject(MAT_DIALOG_DATA) public data: EpisodioModel) { 
-      console.log("Dialog => data =>", data)
     }
 
   cerrar(): void {
