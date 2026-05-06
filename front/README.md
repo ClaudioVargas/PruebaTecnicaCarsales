@@ -79,3 +79,4 @@ Asegúrate de tener instalado lo siguiente antes de empezar:
 *   Reescribir el README del frontend para explicar cómo correr la app, qué hace, qué decisiones técnicas tomó y qué *   partes de la pauta cubre.
 *   Como mejora de puntaje, agregar manejo global de errores con interceptor.
 *   Como mejora de puntaje, considerar responsive real y alguna optimización simple como caching o lazy loading.
+
