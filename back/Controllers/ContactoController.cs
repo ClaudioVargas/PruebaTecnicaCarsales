@@ -43,6 +43,8 @@ namespace back.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Contacto contacto)
         {
+            // codigo para probar el middleware
+            //throw new ArgumentOutOfRangeException(nameof(contacto.Telefono), "El telefono ya existe");
             try
             {
 
