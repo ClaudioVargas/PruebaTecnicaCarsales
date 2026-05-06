@@ -9,10 +9,10 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 - [Prerrequisitos](#-prerrequisitos)
 - [Instalación y Configuración](#-instalación-y-configuración)
 - [Comandos Disponibles](#-comandos-disponibles)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
-- [Contribución](#-contribución)
 - [Licencia](#-licencia)
+- [Parte de la pauta cubierta](#-parte-de-la-pauta-cubierta)
+
 
 
 ## ✨ Características
